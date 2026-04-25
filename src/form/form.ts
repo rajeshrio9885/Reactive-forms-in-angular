@@ -16,6 +16,6 @@ export class Form {
   })
 
   onSubmit(){
-    this.form.reset();// reset the form
+    this.form.reset();
   }
 }
