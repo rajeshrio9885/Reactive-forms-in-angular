@@ -1,0 +1,22 @@
+<h1>Reactive Form with validation in Angular</h1>
+<form [formGroup]="form" (submit)="onSubmit()" >
+    <div> 
+        <label>Name<span [style]="{color:'red'}">*</span></label>
+        <input type="text" formControlName="name">
+        <span *ngIf="form.get('name')?.invalid && form.get('name')?.touched" [ngClass]="'validationErr'">Name is required</span>
+    </div>
+    <div> 
+        <label>Age<span [style]="{color:'red'}">*</span></label>
+        <input type="number" formControlName="age">
+        <span *ngIf="form.get('age')?.touched && form.get('age')?.errors?.['required']" [ngClass]="'validationErr'">Age is required</span>
+        <span *ngIf="form.get('age')?.touched && form.get('age')?.errors?.['min']" [ngClass]="'validationErr'">Minimum age is 1</span>
+    </div>
+     <div> 
+        <label>RollNo<span [style]="{color:'red'}">*</span></label>
+        <input type="text" formControlName="RollNo">
+        <span *ngIf="form.get('RollNo')?.invalid && form.get('RollNo')?.touched" [ngClass]="'validationErr'">RollNo is required</span>
+    </div>
+    <div>
+        <button type="submit" [disabled]="form?.invalid">Submit</button>
+    </div>
+</form>
